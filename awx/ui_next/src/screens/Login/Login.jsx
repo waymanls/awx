@@ -120,11 +120,11 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
     helperText = i18n._(t`There was a problem signing in. Please try again.`);
   }
 
-  const HeaderBrand = <Brand ouiaId="Logo" src={logo} alt={alt || brandName} />;
+  const HeaderBrand = <Brand ouiaId="brand-logo" src={logo} alt={alt || brandName} />;
   const Header = <LoginHeader headerBrand={HeaderBrand} />;
   const Footer = (
     <LoginFooter
-      ouiaId="LoginFooter"
+      ouiaId="login-footer"
       dangerouslySetInnerHTML={{
         __html: sanitizeHtml(loginInfo),
       }}
@@ -134,7 +134,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
   return (
     <Login header={Header} footer={Footer}>
       <LoginMainHeader
-        ouiaId="LoginHeader"
+        ouiaId="login-header"
         title={
           brandName
             ? i18n._(t`Welcome to Ansible ${brandName}! Please Sign In.`)
@@ -151,7 +151,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
         >
           {formik => (
             <LoginForm
-              ouiaId="LoginForm"
+              ouiaId="login-form"
               className={authError ? 'pf-m-error' : ''}
               helperText={helperText}
               isLoginButtonDisabled={isAuthenticating}
@@ -180,7 +180,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
             isOpen={loginInfoError}
             variant="error"
             title={i18n._(t`Error!`)}
-            ouiaId="loginInfoError"
+            ouiaId="login-info-error"
             onClose={dismissLoginInfoError}
           >
             {i18n._(
@@ -198,7 +198,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 const loginUrl = socialAuthOptions[authKey].login_url;
                 if (authKey === 'azuread-oauth2') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthAzure" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-azure" href={loginUrl} key={authKey}>
                       <Tooltip content={i18n._(t`Sign in with Azure AD`)}>
                         <AzureIcon />
                       </Tooltip>
@@ -207,7 +207,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithub" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github" href={loginUrl} key={authKey}>
                       <Tooltip content={i18n._(t`Sign in with GitHub`)}>
                         <GithubIcon />
                       </Tooltip>
@@ -216,7 +216,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github-org') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithubOrg" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github-org" href={loginUrl} key={authKey}>
                       <Tooltip
                         content={i18n._(t`Sign in with GitHub Organizations`)}
                       >
@@ -227,7 +227,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github-team') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithubTeam" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github-team" href={loginUrl} key={authKey}>
                       <Tooltip content={i18n._(t`Sign in with GitHub Teams`)}>
                         <GithubIcon />
                       </Tooltip>
@@ -236,7 +236,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github-enterprise') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithubEnterprise" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github-enterprise" href={loginUrl} key={authKey}>
                       <Tooltip
                         content={i18n._(t`Sign in with GitHub Enterprise`)}
                       >
@@ -247,7 +247,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github-enterprise-org') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithubEnterpriseOrg" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github-enterprise-org" href={loginUrl} key={authKey}>
                       <Tooltip
                         content={i18n._(
                           t`Sign in with GitHub Enterprise Organizations`
@@ -260,7 +260,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'github-enterprise-team') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGithubEnterpriseTeam" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-github-enterprise-team" href={loginUrl} key={authKey}>
                       <Tooltip
                         content={i18n._(
                           t`Sign in with GitHub Enterprise Teams`
@@ -273,7 +273,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 }
                 if (authKey === 'google-oauth2') {
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthGoogle" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-google" href={loginUrl} key={authKey}>
                       <Tooltip content={i18n._(t`Sign in with Google`)}>
                         <GoogleIcon />
                       </Tooltip>
@@ -283,7 +283,7 @@ function AWXLogin({ alt, i18n, isAuthenticated }) {
                 if (authKey.startsWith('saml')) {
                   const samlIDP = authKey.split(':')[1] || null;
                   return (
-                    <LoginMainFooterLinksItem ouiaId="SocialAuthSAML" href={loginUrl} key={authKey}>
+                    <LoginMainFooterLinksItem ouiaId="social-auth-saml" href={loginUrl} key={authKey}>
                       <Tooltip
                         content={
                           samlIDP
