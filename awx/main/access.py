@@ -45,6 +45,7 @@ from awx.main.models import (
     InventoryUpdateEvent,
     Job,
     JobEvent,
+    UnpartitionedJobEvent,
     JobHostSummary,
     JobLaunchConfig,
     JobTemplate,
@@ -2355,6 +2356,11 @@ class JobEventAccess(BaseAccess):
         return False
 
 
+class UnpartitionedJobEventAccess(JobEventAccess):
+
+    model = UnpartitionedJobEvent
+
+
 class ProjectUpdateEventAccess(BaseAccess):
     """
     I can see project update event records whenever I can access the project update
@@ -2898,3 +2904,4 @@ class WorkflowApprovalTemplateAccess(BaseAccess):
 
 for cls in BaseAccess.__subclasses__():
     access_registry[cls.model] = cls
+access_registry[UnpartitionedJobEvent] = UnpartitionedJobEventAccess
