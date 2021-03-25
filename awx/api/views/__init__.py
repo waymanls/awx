@@ -3764,6 +3764,8 @@ class JobEventDetail(RetrieveAPIView):
 
     @property
     def is_partitioned(self):
+        if 'pk' not in self.kwargs:
+            return True
         return int(self.kwargs['pk']) > unpartitioned_event_horizon(models.JobEvent)
 
     @property
@@ -3787,6 +3789,8 @@ class JobEventChildrenList(NoTruncateMixin, SubListAPIView):
 
     @property
     def is_partitioned(self):
+        if 'pk' not in self.kwargs:
+            return True
         return int(self.kwargs['pk']) > unpartitioned_event_horizon(models.JobEvent)
 
     @property
