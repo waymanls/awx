@@ -160,10 +160,10 @@ def gather(dest=None, module=None, subset=None, since=None, until=None, collecti
         else:
             until = _now if until is None else until
 
-        horizon = until - timedelta(weeks=4)
-        if since is not None:
-            # Make sure the start isn't more than 4 weeks prior to `until`.
-            since = max(since, horizon)
+        if since:
+            horizon = since + timedelta(weeks=4)
+        else:
+            horizon = until - timedelta(weeks=4)
 
         if since and since >= until:
             logger.warning("Start of the collection interval is later than the end, ignoring request.")
