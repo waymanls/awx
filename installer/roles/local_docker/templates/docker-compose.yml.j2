@@ -40,6 +40,7 @@ services:
       - "{{ docker_compose_dir }}/environment.sh:/etc/tower/conf.d/environment.sh"
       - "{{ docker_compose_dir }}/credentials.py:/etc/tower/conf.d/credentials.py"
       - "{{ docker_compose_dir }}/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "{{ docker_compose_dir }}/mime.types:/etc/nginx/mime.types:ro"
       - "{{ docker_compose_dir }}/redis_socket:/var/run/redis/:rw"
     {% if project_data_dir is defined %}
       - "{{ project_data_dir +':/var/lib/awx/projects:rw' }}"
