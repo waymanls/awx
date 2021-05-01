@@ -24,6 +24,8 @@
       mode: "0600"
     - file: nginx.conf
       mode: "0600"
+    - file: mime.types
+      mode: "0600"
     - file: redis.conf
       mode: "0664"
   register: awx_compose_config
